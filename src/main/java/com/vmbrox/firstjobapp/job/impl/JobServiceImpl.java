@@ -13,13 +13,8 @@ public class JobServiceImpl implements JobService {
     private final List<Job> jobs = new ArrayList<>();
 
     @Override
-    public List<Job> findAll() {
-        return jobs;
-    }
-
-    @Override
     public List<Job> findall() {
-        return List.of();
+        return jobs;
     }
 
     @Override
@@ -29,19 +24,9 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Job getjulJobById(long id) {
-        return null;
-    }
-
-    @Override
-    public Job getJobById(long id) {
-        return null;
-    }
-
-    @Override
     public Job getJobById(Long id) {
         return jobs.stream()
-                .filter(job -> job.getId()==(id))
+                .filter(job -> job.getId() == id)
                 .findFirst()
                 .orElse(null);
     }
