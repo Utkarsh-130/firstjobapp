@@ -9,7 +9,7 @@ import lombok.Setter;
 public class Job {
     private long id;
     private String title;
-    private String desciption;
+    private String description;
     private String maxSalary;
     private String minSalary;
     private String Location;
