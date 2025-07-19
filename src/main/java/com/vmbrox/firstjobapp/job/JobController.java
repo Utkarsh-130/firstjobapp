@@ -1,6 +1,8 @@
 package com.vmbrox.firstjobapp.job;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -24,8 +26,12 @@ public class JobController {
         return "Job created successfully";
     }
     @GetMapping("/jobs/{id}")
-    public Job getJobById(@PathVariable long id) {
+    public Job getJobById(@PathVariable Long id) {
         Job job= jobService.getJobById(id);
+        if (job == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Job not found");
+        }
+        return job;
 
     }
 }

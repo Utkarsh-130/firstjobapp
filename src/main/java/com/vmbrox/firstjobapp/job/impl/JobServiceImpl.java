@@ -9,17 +9,40 @@ import java.util.List;
 
 @Service
 public class JobServiceImpl implements JobService {
-    private long nextid=0L;
-    private List<Job> jobs = new ArrayList<>();
+    private Long nextId = 1L;
+    private final List<Job> jobs = new ArrayList<>();
 
     @Override
-    public List<Job> findall() {
+    public List<Job> findAll() {
         return jobs;
     }
 
     @Override
+    public List<Job> findall() {
+        return List.of();
+    }
+
+    @Override
     public void createJob(Job job) {
-        job.setId(nextid++);
-        jobs.add(job); // Add the job to the list
+        job.setId(nextId++);
+        jobs.add(job);
+    }
+
+    @Override
+    public Job getjulJobById(long id) {
+        return null;
+    }
+
+    @Override
+    public Job getJobById(long id) {
+        return null;
+    }
+
+    @Override
+    public Job getJobById(Long id) {
+        return jobs.stream()
+                .filter(job -> job.getId()==(id))
+                .findFirst()
+                .orElse(null);
     }
 }
