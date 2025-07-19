@@ -14,7 +14,7 @@ public class JobServiceImpl implements JobService {
     private final List<Job> jobs = new ArrayList<>();
 
     @Override
-    public List<Job> findall() {
+    public List<Job> findAll() {
         return jobs;
     }
 
@@ -27,27 +27,28 @@ public class JobServiceImpl implements JobService {
     @Override
     public Job getJobById(Long id) {
         return jobs.stream()
-                .filter(job -> job.getId() == id)
+                .filter(job -> job.getId().equals(id))
                 .findFirst()
                 .orElse(null);
     }
+
     @Override
-    public boolean deleteJobById(Long id){
-        Iterator<Job>iterator= jobs.iterator();
-        while(iterator.hasNext()){
-            Job job=iterator.next();
-            if(job.getId()==id){
+    public boolean deleteJobById(Long id) {
+        Iterator<Job> iterator = jobs.iterator();
+        while (iterator.hasNext()) {
+            Job job = iterator.next();
+            if (job.getId().equals(id)) {
                 iterator.remove();
                 return true;
             }
         }
-        return false ;
+        return false;
     }
 
     @Override
     public boolean updateJob(Long id, Job updatedJob) {
         for (Job job : jobs) {
-            if (job.getId() == id) {
+            if (job.getId().equals(id)) {
                 job.setTitle(updatedJob.getTitle());
                 job.setDescription(updatedJob.getDescription());
                 job.setMinSalary(updatedJob.getMinSalary());
@@ -58,5 +59,4 @@ public class JobServiceImpl implements JobService {
         }
         return false;
     }
-}
 }

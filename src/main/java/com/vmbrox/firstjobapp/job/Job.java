@@ -7,12 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Job {
-    private long id;
+    private Long id;
     private String title;
     private String description;
     private String maxSalary;
     private String minSalary;
-    private String Location;
+    private String location;
 
 
 
