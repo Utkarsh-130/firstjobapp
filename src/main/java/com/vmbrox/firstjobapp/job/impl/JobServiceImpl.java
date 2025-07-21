@@ -56,7 +56,7 @@ public class JobServiceImpl implements JobService {
                 job.setLocation(updatedJob.getLocation());
                 return true;
             }
-        }
+}
         return false;
     }
 }
